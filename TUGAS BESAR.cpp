@@ -1,9 +1,7 @@
-#include<iostream>
-#include<conio.h>
-#include<cstring>
-#include<time.h>
-#include<string>
-#include<fstream>
+#include<iostream> // untuk standar input/output
+#include<conio.h> //untuk getch
+#include<cstring> //Untuk strcpy dkk
+#include<time.h> //untuk program random
 using namespace std;
 
 //Prototype
@@ -15,13 +13,19 @@ int kereta();
 int jam_terbang();
 
 
-
+//Program Utama
 int main()
 {
 int layanan;
-menu_utama();
+cout << "|   # Nama Anggota Kelompok #  	 |   NIM   |" << endl;
+cout << "| 1. Denny Firmansyah Suwardi  	 | 2203067 |" << endl;
+cout << "| 2. Gilang Kurniawansyah      	 | 2203071 |" << endl;
+cout << "| 3. Mochamad Rizky Maulana    	 | 2203077 |" << endl;
+cout << "| 4. Mohamad Rifqi Maulana     	 | 2203079 |" << endl;
+
 garis();
 system("color f4");
+
 cout << "\nPilih Menu (1..2) 	 " << endl;
 cout << "1. Pesan Tiket Pesawat" << endl;
 cout << "2. Pesan Tiket Kereta" << endl;
@@ -36,14 +40,6 @@ if (layanan == 1){
 
 }
 
-void menu_utama(){
-	garis();
-    cout << "|   # Nama Anggota Kelompok #  	 |   NIM   |" << endl;
-    cout << "| 1. Denny Firmansyah Suwardi  	 | 2203067 |" << endl;
-    cout << "| 2. Gilang Kurniawansyah      	 | 2203071 |" << endl;
-    cout << "| 3. Mochamad Rizky Maulana    	 | 2203077 |" << endl;
-    cout << "| 4. Mohamad Rifqi Maulana     	 | 2203079 |" << endl;
-}
 
 int airport(){
 	char maskapai[20],nama[20],kode_penerbangan,rute[30],jawab;
@@ -142,23 +138,23 @@ struct
   int jumbel, harga;
   long bayar, diskon, pembayaran, tot_bay, uang_kem;
 }tiket;
-char lagi;
+char lagi,jawab;
 
 atas:
 
 system("cls");
 
 cout << "\n\t =======# Gapura Station #=======";
-cout << "\n ___________________________________ ";
-cout << "\n| KODE KERETA      |    TUJUAN      |";
-cout << "\n| 1. IMY           | Indramayu      |";
-cout << "\n| 2. CRB           | Cirebon        |";
-cout << "\n| 3. KNA           | Kuningan       |";
-cout << "\n|___________________________________|";
+cout << "\n _________________________________________________";
+cout << "\n| KODE KERETA   |    TUJUAN       |    KELAS      |";
+cout << "\n| 1. IMY        | 1. Indramayu    | 1. Executive  |";
+cout << "\n| 2. CRB        | 2. Cirebon      | 2. Bisnis     |";
+cout << "\n| 3. KNA        | 3. Kuningan     | 3. Ekonomi    |";
+cout << "\n|_________________________________________________|";
 
-cout<<"\n\nKode kereta[1..3]\t: ";cin>>tiket.kode;
-cout<<"Kelas kereta[1..3]\t: ";cin>>tiket.kelas;
-cout<<"Nama pemesan\t\t: ";cin>>tiket.nama_orang;
+cout<<"\n\nKode Kereta[1..3]\t: ";cin>>tiket.kode;
+cout<<"Kelas Kereta[1..3]\t: ";cin>>tiket.kelas;
+cout<<"Nama Pemesan\t\t: ";cin>>tiket.nama_orang;
 cout<<endl;
 system("cls");
 garis();
@@ -221,12 +217,12 @@ if (strcmpi(tiket.kode, "3")==0){
     }
 }
 
-cout<<" Nama Pemesan		:"<<tiket.nama_orang<<endl;
-cout<<" Nama Kereta		:"<<tiket.nama_kereta<<endl;
-cout<<" Kelas kereta		:"<<tiket.kelas<<endl;
-cout<<" Nama kelas\t\t:"<<tiket.nama_kelas<<endl;
-cout<<" Harga pertiket\t	:"<<tiket.harga<<endl;
-cout<<" Jumlah pemesanan\t:";cin>>tiket.jumbel;
+cout<<" Nama Pemesan		: "<<tiket.nama_orang<<endl;
+cout<<" Nama Kereta		: "<<tiket.nama_kereta<<endl;
+cout<<" Kelas Kereta		: "<<tiket.kelas<<endl;
+cout<<" Nama Kelas\t\t: "<<tiket.nama_kelas<<endl;
+cout<<" Harga Pertiket\t	: "<<tiket.harga<<endl;
+cout<<" Jumlah Pemesanan\t: ";cin>>tiket.jumbel;
 
 tiket.bayar=tiket.jumbel*tiket.harga;
 
@@ -242,28 +238,38 @@ else
 {tiket.diskon=tiket.bayar*0;}
 
 
-cout<<" Pembayaran\t\t:"<<tiket.bayar<<endl;
-cout<<" Diskon\t\t\t:"<<tiket.diskon<<endl;
+cout<<" Pembayaran\t\t: "<<tiket.bayar<<endl;
+cout<<" Diskon\t\t\t: "<<tiket.diskon<<endl;
 
 garis();
 cout<<""<<endl;
 
 tiket.tot_bay=tiket.bayar-tiket.diskon;
-cout<<"Total pembayaran\t:  "<<tiket.tot_bay<<endl;
+cout<<" Total pembayaran\t: "<<tiket.tot_bay<<endl;
 bayar:
-cout<<"Uang Pembayaran\t\t: ";cin>>tiket.pembayaran;
+cout<<" Uang Pembayaran\t\t: ";cin>>tiket.pembayaran;
 
 tiket.uang_kem=tiket.pembayaran-tiket.tot_bay;
 if(tiket.pembayaran >= tiket.tot_bay){
-	cout<<"Uang kembali\t\t: "<<tiket.uang_kem<<endl;
+	cout<<" Uang kembali\t\t: "<<tiket.uang_kem<<endl;
 }else{
-	cout << "Uang Anda Tidak Cukup !! " << endl;
-	goto bayar;
+	cout << " Uang Anda Tidak Cukup !! " << endl;
+	cout << " Ingin Melanjutkan Transaksi? Y/N";
+	jawab=getch();
+	if(jawab == 'y' || jawab == 'Y'){
+        cout << endl;
+        goto bayar;
+
+	}else{
+    return 0;
+	}
+
 
 }
 cout<<""<<endl;
 cout<<""<<endl;
-cout<<"ingin pilih lagi[y/t]        =";cin>>lagi;
+cout<<" ingin pilih lagi[y/t]        =";
+lagi = getch();
 if(lagi=='y' || lagi=='Y')
 goto atas;
 getch();
